@@ -39,3 +39,43 @@ instance_state = [
   "running",
 ]
 
+
+#####################
+
+sed 's/old/new/' file  // replace the value
+
+curl -s ifconfig.io // https service that return the public ip
+
+#######################
+
+make : The term 'make' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path 
+was included, verify that the path is correct and try again.
+At line:1 char:1
++ make all
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (make:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+	
+	
+	
+#######################################333
+
+The resolve timer (resolve_timeout) is the duration Alertmanager waits before marking an alert as resolved after it stops receiving updates from Prometheus.
+
+#######################################3
+remote: error: See https://gh.io/lfs for more information.
+remote: error: File terraform-aws-iac/prometheus_stack/.terraform/providers/registry.terraform.io/hashicorp/aws/6.27.0/windows_386/terraform-provider-aws_v6.27.0_x5.exe is 741.08 MB; this exceeds GitHub's file size limit of 100.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+To https://github.com/tech-deepa/observability.git
+ ! [remote rejected] main -> main (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/tech-deepa/observability.git'
+PS C:\Users\Dee\project\demo\prometheus> git rm -r --cached terraform-aws-iac/prometheus_stack/.terraform
+rm 'terraform-aws-iac/prometheus_stack/.terraform/modules/modules.json'
+rm 'terraform-aws-iac/prometheus_stack/.terraform/providers/registry.terraform.io/hashicorp/aws/6.27.0/windows_386/LICENSE.txt'
+rm 'terraform-aws-iac/prometheus_stack/.terraform/providers/registry.terraform.io/hashicorp/aws/6.27.0/windows_386/terraform-provider-aws_v6.27.0_x5.exe'
+
+git rm -r --cached terraform-aws-iac/prometheus_stack/.terraform
+
+git rm --cached terraform-aws-iac/prometheus_stack/.terraform.lock.hcl
+git rm --cached terraform-aws-iac/prometheus_stack/terraform.tfstate
+git rm --cached terraform-aws-iac/prometheus_stack/terraform.tfstate.backup
