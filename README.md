@@ -8,11 +8,11 @@ This doc is based on the DevOpsCube tutorial at https://devopscube.com/setup-pro
 --------------------------------
 Stack Components
 
-Prometheus          Time-series database & metrics scraper
-Alertmanager        Alert routing & notifications 
-Grafana Dashboard and visualization 
-Node Exporter       Collects host machine metrics 
-Docker Compose      Orchestrates containers 
+- Prometheus          Time-series database & metrics scraper
+- Alertmanager        Alert routing & notifications 
+- Grafana Dashboard and visualization 
+- Node Exporter       Collects host machine metrics 
+- Docker Compose      Orchestrates containers 
 
 ----------------------------------
 
@@ -27,3 +27,4 @@ Before you begin:
 
 
 For setup please refer setup-doc.txt
+
