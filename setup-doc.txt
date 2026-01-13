@@ -48,18 +48,19 @@ Prometheus	http://<server-ip>:9090
 Alertmanager	http://<server-ip>:9093
 Grafana	http://<server-ip>:3000
 
-📈 Step 4 — Validate Monitoring
+Step 4 - Validate Monitoring
 After starting:
 
-✔ Check Prometheus targets:
+Check Prometheus targets:
 Status → Targets → node-exporter should be UP.
 
-✔ Run sample queries in Prometheus UI, e.g.:
+Run sample queries in Prometheus UI, e.g.:
 
 scss
 Copy code
 avg by(instance)(irate(node_cpu_seconds_total{mode!='idle'}[1m]))
-⚠️ Step 5 — Configure Grafana
+
+Step 5 - Configure Grafana
 Login at http://<server-ip>:3000
 
 Add Prometheus as a data source:
@@ -68,14 +69,14 @@ URL: http://prometheus:9090
 
 Import dashboards (Node Exporter templates, etc.)
 
-🔔 Step 6 — Alerts
+Step 6 - Alerts
 Prometheus alert rules are defined in alertrules.yml.
 
 In the Prometheus UI under Alerts, you will see these rules and can simulate triggers.
 Alertmanager UI lets you manage receivers and routing. 
 DevOpsCube
 
-🧹 Cleanup
+Cleanup
 To stop and remove containers:
 
 bash
@@ -86,16 +87,3 @@ To remove persistent volumes too:
 bash
 Copy code
 sudo docker compose down -v
-
---------------------------------------------------------
-Notes & Tips
-Use fixed tags for Docker images (prom/prometheus:vX.Y.Z) to avoid breaking changes.
-
-Exposing ports publicly without authentication is NOT recommended in production.
-
-Configure Alertmanager receivers (email, Slack, etc.) as needed in alertmanager.yml. 
-Spacelift
-
-References
-DevOpsCube guide: Setting Up Prometheus Using Docker Compose 
-DevOpsCube
