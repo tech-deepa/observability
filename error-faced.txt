@@ -79,3 +79,13 @@ git rm -r --cached terraform-aws-iac/prometheus_stack/.terraform
 git rm --cached terraform-aws-iac/prometheus_stack/.terraform.lock.hcl
 git rm --cached terraform-aws-iac/prometheus_stack/terraform.tfstate
 git rm --cached terraform-aws-iac/prometheus_stack/terraform.tfstate.backup
+
+git filter-branch --force --index-filter "git rm -r --cached --ignore-unmatch terraform-aws-iac/prometheus_stack/.terraform" --prune-empty --tag-name-filter cat -- --all
+
+git stash push -u -m "temp-before-filter-branch"
+
+rm -rf .git/refs/original/
+git reflog expire --expire=now --all
+git gc --prune=now --aggressive
+
+

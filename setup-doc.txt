@@ -1,0 +1,101 @@
+Step 1 - Clone Repository
+
+git clone https://github.com/techiescamp/devops-projects
+cd devops-projects/04-prometheus-observability-stack
+This includes all required configs and setup code. 
+
+Step 2 - Prepare Config Files
+Prometheus config (prometheus.yml)
+Make sure this file includes scrape configs for the node exporter and Alertmanager.
+
+Targets file (targets.json)
+This file contains targets for Prometheus to scrape (e.g., Node Exporter) using file-based service discovery.
+
+step 3 - create the infrastucture using terraform
+cd terraform-aws/prometheus-stack/
+terraform fmt
+terraform init
+terraform validate
+Execute the plan and apply the changes.
+
+terraform plan --var-file=../vars/ec2.tfvars
+terraform apply --var-file=../vars/ec2.tfvars
+
+Step 4 - Launch Stack
+Make a ssh connection to ec2 
+git clone https://github.com/techiescamp/devops-projects
+
+Bring up the stack with Docker Compose:
+
+bash
+Copy code
+sudo docker-compose up -d
+
+
+This will start:
+
+Prometheus
+Grafana
+Alertmanager
+Node Exporter
+in containers. 
+
+
+Access Dashboards
+-------------------------------------
+App	URL
+Prometheus	http://<server-ip>:9090
+Alertmanager	http://<server-ip>:9093
+Grafana	http://<server-ip>:3000
+
+📈 Step 4 — Validate Monitoring
+After starting:
+
+✔ Check Prometheus targets:
+Status → Targets → node-exporter should be UP.
+
+✔ Run sample queries in Prometheus UI, e.g.:
+
+scss
+Copy code
+avg by(instance)(irate(node_cpu_seconds_total{mode!='idle'}[1m]))
+⚠️ Step 5 — Configure Grafana
+Login at http://<server-ip>:3000
+
+Add Prometheus as a data source:
+
+URL: http://prometheus:9090
+
+Import dashboards (Node Exporter templates, etc.)
+
+🔔 Step 6 — Alerts
+Prometheus alert rules are defined in alertrules.yml.
+
+In the Prometheus UI under Alerts, you will see these rules and can simulate triggers.
+Alertmanager UI lets you manage receivers and routing. 
+DevOpsCube
+
+🧹 Cleanup
+To stop and remove containers:
+
+bash
+Copy code
+sudo docker compose down
+To remove persistent volumes too:
+
+bash
+Copy code
+sudo docker compose down -v
+
+--------------------------------------------------------
+Notes & Tips
+Use fixed tags for Docker images (prom/prometheus:vX.Y.Z) to avoid breaking changes.
+
+Exposing ports publicly without authentication is NOT recommended in production.
+
+Configure Alertmanager receivers (email, Slack, etc.) as needed in alertmanager.yml. 
+Spacelift
+
+References
+DevOpsCube guide: Setting Up Prometheus Using Docker Compose 
+DevOpsCube
